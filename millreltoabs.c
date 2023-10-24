@@ -19,15 +19,37 @@ char *wheel_position (double x, double y, double dt)
     return st;
 }
 
+void print_instructions(void)
+{
+
+    printf("\n\n\n0,0");
+    printf("\n  ---------------");
+    printf("\n  |      0      |");
+    printf("\n  |             |");
+    printf("\n  | 270      90 |");
+    printf("\n  |             |");
+    printf("\n  |     180     |");
+    printf("\n  ---------------");
+    
+    printf("\n\n Always reference back left corner as 0,0");
+
+    printf("\n\n\n");
+}
+
 int main (void)
 {
     double sx,sy,a,ra,d,dx,dy,dt;
     char *wp = NULL;
 
-    dt = get_double("\nEnter Distance Per Turn of Wheel: ");
+    print_instructions();
+
+    dt = get_double("\nEnter Distance Per Turn of Wheel in Inches: ");
     sx = get_double("\nEnter Starting X Position: ");
     sy = get_double("\nEnter Starting Y Position: ");
 
+    wp = wheel_position(sx,sy,dt);
+    printf("\n\nStarting at \tX = %3.4f   Y = %3.4f   %s", sx,sy,wp);
+    free_malloc(wp);
     
     while(TRUE)
     {
@@ -35,11 +57,7 @@ int main (void)
         if (d <= 0.0) break;
         
         a = get_double("\nEnter Angle: ");
-       
-        wp = wheel_position(sx,sy,dt);
-        printf("\n\nStarting at \tX = %3.3f   Y = %3.3f   %s", sx,sy,wp);
-        free_malloc(wp);
-
+     
         ra = PI * a / 180.0;
 
         dx = sx + d * sin(ra);
@@ -52,7 +70,7 @@ int main (void)
         }
 
         wp = wheel_position(dx,dy,dt);
-        printf ("\n\nEnding at \tX = %3.3f   Y = %3.3f   %s", dx, dy,wp);
+        printf ("\n\nEnding at \tX = %3.4f   Y = %3.4f   %s", dx, dy,wp);
         free_malloc(wp);
 
         sx = dx;
