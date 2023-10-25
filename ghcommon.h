@@ -61,6 +61,7 @@ int angle_in_range(double, double, double);
 
 fraction decimal_to_fraction(double, double);
 double fraction_to_decimal(fraction);
+double get_fraction(const char *);
 
 void d_swap(double *, double *);
 int d_partition(double[], int, int);

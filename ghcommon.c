@@ -581,6 +581,53 @@ double get_double(const char *display)
 	}
 }
 
+double get_fraction(const char *display)
+{
+	char *buffer = NULL;
+	double value;
+	int i,n,d;
+	int num_filled;
+	int rtn = FAIL;
+
+	while (TRUE)
+	{
+		if (get_string(&buffer, display) == 0)
+			continue;
+
+		if (strstr(buffer,"/"))
+		{
+			num_filled = sscanf(buffer,"%d %d/%d", &i, &n, &d);
+
+			if (num_filled == 3) 
+			{
+				rtn = SUCCESS;
+				if (i >= 0.0)
+					value = (double)i + (double)n / (double)d;
+				else
+					value = (double)i - (double)n / (double)d;
+			}
+			else
+			{
+				num_filled = sscanf(buffer,"%d/%d", &n, &d);
+				if (num_filled == 2)
+				{
+					rtn = SUCCESS;
+					value = (double)n / (double)d;
+				}
+			}
+    	} 
+		else 
+		{
+			rtn = string_to_double(buffer, &value);
+		}
+
+		free_malloc(buffer);
+
+		if (rtn == SUCCESS)
+			return value;
+	}
+}
+
 int get_int(const char *display)
 {
 	char *buffer = NULL;

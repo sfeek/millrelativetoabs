@@ -43,9 +43,9 @@ int main (void)
 
     print_instructions();
 
-    dt = get_double("\nEnter Distance Per Turn of Wheel in Inches: ");
-    sx = get_double("\nEnter Starting X Position: ");
-    sy = get_double("\nEnter Starting Y Position: ");
+    dt = get_fraction("\nEnter Distance Per Turn of Wheel in Inches: ");
+    sx = get_fraction("\nEnter Starting X Position: ");
+    sy = get_fraction("\nEnter Starting Y Position: ");
 
     wp = wheel_position(sx,sy,dt);
     printf("\n\nStarting at \tX = %3.4f   Y = %3.4f   %s", sx,sy,wp);
@@ -53,10 +53,10 @@ int main (void)
     
     while(TRUE)
     {
-        d = get_double("\n\n\nEnter Distance (0 to Quit): ");
+        d = get_fraction("\n\n\nEnter Distance (0 to Quit): ");
         if (d <= 0.0) break;
         
-        a = get_double("\nEnter Angle: ");
+        a = get_fraction("\nEnter Angle: ");
      
         ra = PI * a / 180.0;
 
