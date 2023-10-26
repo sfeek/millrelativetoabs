@@ -43,7 +43,7 @@ int get_english_or_metric(void)
 
     while (TRUE)
     {
-        count = get_string(&s, "\n\nEnter <E>nglish or <M>etric");
+        count = get_string(&s, "\n\nEnter <E>nglish or <M>etric: ");
 
         if (count == 0)
         {
