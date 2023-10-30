@@ -22,7 +22,7 @@ char *wheel_position(double x, double y, double dt)
 void print_instructions(void)
 {
 
-    printf("\nRelative to Absolute Position Calculator for Manual Milling/Drilling - v1.2");
+    printf("\nRelative to Absolute Position Calculator for Manual Milling/Drilling - v1.22");
     printf("\n\n\n0,0");
     printf("\n  ---------------");
     printf("\n  |      0      |");
